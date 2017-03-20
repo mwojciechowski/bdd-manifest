@@ -31,8 +31,8 @@ class FMCEdgeTest  {
       Map("feature" -> "f5", "dataset" -> "ds9", "input" -> "output").withDefault(s => "")
     )
     val graph = new BDDGraph( maps.map(m => new FMCEdge(m)))
-    assert(graph.nodes.size == 15)
-    assert(graph.edges.size == 15)
+    assert(graph.nodes.size == 14)
+    assert(graph.edges.size == 13)
     assert(graph.isAcyclic)
   }
 
