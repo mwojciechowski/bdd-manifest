@@ -1,0 +1,23 @@
+Config generation :
+    creating graph from FMC
+    updating graph with Scenario definitions
+    introduce graph comparison
+    change generating config files from FMC to graph
+    change generating sql files from FMC to graph
+    change generating schema files from FMC to graph
+    change generating data catalogue file from FMC to graph
+    change generating manifest file from config to graph
+
+Feature file reading:
+    delegate functionality in MappingSteps to other classes (separate functions, joins, substitution)
+    split MappingSteps to smaller classes
+    make possible parallel parsing (using ThreadLocal)
+
+SQL generation:
+    decrease BaseLink class hierarchy
+    enhance transformation model
+    introduce SQL model
+
+General architecture:
+    in local manifest generation allow client use server directly without REST request
+

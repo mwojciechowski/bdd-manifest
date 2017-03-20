@@ -19,7 +19,7 @@ class FMCEdge(val map : Map[String, String]) {
 
   def input = map("input")
 
-  def datasetNode = DatasetNode(DataCatalogueKey(dataset, system, region, level))
+  def datasetNode = DatasetNode(DataCatalogueKey(dataset, system, region, entity, dtype, level))
 
   def jobNode = TransfNode(feature, job)
 
@@ -29,11 +29,18 @@ class FMCEdge(val map : Map[String, String]) {
 
   def dataset = map("dataset")
 
-  def system = map("system")
+  def system = map("sourceSystem")
 
   def region = map("region")
+
+  def entity = map("entity")
+
+  def dtype = map("type")
 
   def level = map("level")
 
   def file = map("file")
+
+  def catalogueKey: DataCatalogueKey = datasetNode.key
+
 }

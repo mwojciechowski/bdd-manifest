@@ -5,5 +5,5 @@ package com.hsbc.fsa.bdd.manifest.graph
   */
 case class TransfNode(feature : String, job : String) extends Node(toString) {
   override
-  def toString = String.format("%s_%s", feature, job)
+  def toString = String.format("%s%s", feature, job)
 }

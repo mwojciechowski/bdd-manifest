@@ -1,15 +1,12 @@
 package com.hsbc.fsa.bdd.manifest.catalogue
 
-import com.hsbc.fsa.bdd.manifest.graph.DatasetNode
-
 /**
   * Created by michal on 12.03.17.
   */
-case class DataCatalogueKey(val dataset : String,
-                            val system: String,
-                            val region : String,
-                            val level : String) {
+case class DataCatalogueKey(dataset : String, system: String, region : String,
+                            entity : String, dtype : String, level : String) {
 
-  override
-  def toString = String.format("%s:%s:%s:%s", dataset, system, region, level)
+  def id = String.format("%s:%s:%s:%s:%s:%s", dataset, system, region, entity, dtype, level)
+
+  def usid = String.format("%s_%s_%s_%s_%s_%s", dataset, system, region, entity, dtype, level)
 }
