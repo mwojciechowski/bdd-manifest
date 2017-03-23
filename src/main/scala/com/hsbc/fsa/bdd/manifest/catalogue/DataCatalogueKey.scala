@@ -6,7 +6,8 @@ package com.hsbc.fsa.bdd.manifest.catalogue
 case class DataCatalogueKey(dataset : String, system: String, region : String,
                             entity : String, dtype : String, level : String) {
 
-  def id = String.format("%s:%s:%s:%s:%s:%s", dataset, system, region, entity, dtype, level)
+  //def id = String.format("%s:%s:%s:%s:%s:%s", dataset, system, region, entity, dtype, level)
+  def id = dataset
 
   def usid = String.format("%s_%s_%s_%s_%s_%s", dataset, system, region, entity, dtype, level)
 }

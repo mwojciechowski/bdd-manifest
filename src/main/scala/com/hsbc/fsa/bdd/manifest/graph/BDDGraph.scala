@@ -4,12 +4,13 @@ import com.hsbc.fsa.bdd.manifest.fmc.FMCEdge
 
 import scalax.collection.GraphEdge._
 import scalax.collection.GraphPredef._
+import scalax.collection.GraphTraversal.{BreadthFirst, Parameters, Predecessors}
 import scalax.collection.mutable.Graph
 
 /**
   * Created by michal on 11.03.17.
   */
-class BDDGraph(fmcEgdes : Seq[FMCEdge]) {
+class BDDGraph(fmcEgdes : Traversable[FMCEdge]) {
   def create(e : FMCEdge) : List[DiEdge[Node]] = {
     if("level2".equals(e.level)
       && e.isInput && e.file != null) {
@@ -28,13 +29,15 @@ class BDDGraph(fmcEgdes : Seq[FMCEdge]) {
   val graph = Graph.from(Nil, edges)
 
   val nodes = graph.nodes.toList
+
   def updateTransf(features : Map[String, String]) : Map[Node, String] =
     nodes.map( n => n.value match {
       case TransfNode(f, j) => n.value -> features(f)
     } ).toMap
-
   def isAcyclic: Boolean = graph.isAcyclic
 
   def getCycle = graph.findCycle
+
+  def traverser(root : Node) = graph.outerEdgeTraverser(graph.get(root), Parameters.Bfs(Predecessors))
 
 }
